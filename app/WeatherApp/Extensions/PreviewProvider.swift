@@ -21,8 +21,6 @@ class DeveloperPreview {
     static let instance = DeveloperPreview()
     private init() { }
     
-    let myLocationVM = MyLocationViewModel()
-    
     let weather = WeatherModel(
         timezone: "America/Chicago",
         timezoneOffset: -18000,

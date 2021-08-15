@@ -9,22 +9,21 @@ import SwiftUI
 
 struct MyLocationView: View {
     
-    @EnvironmentObject private var vm: MyLocationViewModel
+    @StateObject var vm = MyLocationViewModel()
     
     var body: some View {
-        VStack() {
-            if(vm.weather.count > 0) {
-                TodayWeatherView(weather: vm.weather[0])
-            }
-            
-//                TodayWeatherView(weather: DeveloperPreview.instance.weather)
-            
+        
+        if let weather = vm.weather {
+            TodayWeatherView(weather: weather)
+        } else {
+            ProgressView()
         }
     }
 }
 
+
 struct MyLocationView_Previews: PreviewProvider {
     static var previews: some View {
-        MyLocationView().environmentObject(dev.myLocationVM)
+        MyLocationView()
     }
 }

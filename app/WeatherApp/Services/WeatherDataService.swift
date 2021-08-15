@@ -7,44 +7,32 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
 class WeatherDataService {
     
-    @Published var weather: [WeatherModel] = []
+    @Published var weather: WeatherModel? = nil
     var weatherSubscription: AnyCancellable?
     
-    init() {
-        getWeather()
+    func updateWeather(forLocation location: CLLocation) {
+        
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&exclude=minutely,hourly,alerts&units=metric&appid=6381d4a8de095849e3374a1a7cab0286") else { return }
+        
+        
+        weatherSubscription = NetworkingManager.download(url: url)
+            .decode(type: WeatherModel.self, decoder: JSONDecoder())
+            .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedWeather) in
+                self?.weather = returnedWeather
+                self?.weatherSubscription?.cancel()
+            })
     }
     
-    private func getWeather() {
+    private func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
+        guard let response = output.response as? HTTPURLResponse,
+              response.statusCode >= 200 && response.statusCode < 300 else {
+            throw URLError(.badServerResponse)
+        }
         
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly,alerts&units=metric&appid=6381d4a8de095849e3374a1a7cab0286") else { return }
-        
-        
-        weatherSubscription = URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .default))
-            .tryMap { (ouput) -> Data in
-                
-                guard let response = ouput.response as? HTTPURLResponse,
-                      response.statusCode >= 200 && response.statusCode < 300 else {
-                    throw URLError(.badServerResponse)
-                }
-                return ouput.data
-            }
-            .receive(on: DispatchQueue.main)
-            .decode(type: WeatherModel.self, decoder: JSONDecoder())
-            .sink { (completition) in
-                switch completition {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            } receiveValue: { [weak self] (returnedWeather) in
-                self?.weather.append(returnedWeather)
-                self?.weatherSubscription?.cancel()
-            }
-        
+        return output.data
     }
 }
