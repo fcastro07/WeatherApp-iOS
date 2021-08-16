@@ -19,11 +19,10 @@ extension PreviewProvider {
 class DeveloperPreview {
     
     static let instance = DeveloperPreview()
-    private init() { }
+    
+    let vm = MyLocationViewModel()
     
     let weather = WeatherModel(
-        timezone: "America/Chicago",
-        timezoneOffset: -18000,
         current: CurrentWeatherModel(
             temp: 34.38,
             feelsLike: 36.95,
@@ -141,5 +140,4 @@ class DeveloperPreview {
                 ]
             ),
         ])
-    
 }

@@ -8,16 +8,10 @@
 import Foundation
 
 struct WeatherModel: Codable {
-    let timezone: String
-    let timezoneOffset: Int
     let current: CurrentWeatherModel
     let daily: [DailyWeatherModel]
     
     enum CodingKeys: String, CodingKey {
-        case timezone
-        case timezoneOffset = "timezone_offset"
         case current, daily
     }
-    
-    
 }

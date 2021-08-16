@@ -8,7 +8,7 @@
 import Foundation
 
 struct DailyWeatherModel: Codable {
-    let dt: Int64
+    let dt: Double
     let temp: DailyTemperatureModel
     let weather: [WeatherInfoModel]
     
