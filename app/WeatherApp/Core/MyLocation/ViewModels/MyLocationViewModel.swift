@@ -23,7 +23,11 @@ class MyLocationViewModel: ObservableObject {
     
     private func addSubscribers() {
         dataService.$weather
-            .sink { (returnedWeather) in
+            .sink { [weak self] (returnedWeather) in
+                guard let self = self else {
+                    return
+                }
+                
                 self.weather = returnedWeather
             }
             .store(in: &cancellables)
