@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		070F570126C9D4C7009EC649 /* WeekWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070F570026C9D4C7009EC649 /* WeekWeatherView.swift */; };
 		070F570326C9D97B009EC649 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070F570226C9D97B009EC649 /* Double.swift */; };
+		0712AE4C26CB3FEC0067991E /* MapLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712AE4B26CB3FEC0067991E /* MapLocationViewModel.swift */; };
+		0712AE4E26CB6C240067991E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712AE4D26CB6C240067991E /* MapView.swift */; };
+		0712AE5026CB7C2C0067991E /* WrappedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712AE4F26CB7C2C0067991E /* WrappedMap.swift */; };
+		0712AE5726CB840E0067991E /* TouchLocationWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712AE5626CB840E0067991E /* TouchLocationWeatherView.swift */; };
 		076A0B1A26C8ECDE00599DFF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076A0B1926C8ECDE00599DFF /* LocationManager.swift */; };
 		076A0B1E26C8FBE000599DFF /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076A0B1D26C8FBE000599DFF /* NetworkingManager.swift */; };
 		079F6B1C26C7968E009C29AA /* MyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F6B1B26C7968E009C29AA /* MyLocationView.swift */; };
@@ -32,6 +36,10 @@
 /* Begin PBXFileReference section */
 		070F570026C9D4C7009EC649 /* WeekWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherView.swift; sourceTree = "<group>"; };
 		070F570226C9D97B009EC649 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		0712AE4B26CB3FEC0067991E /* MapLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocationViewModel.swift; sourceTree = "<group>"; };
+		0712AE4D26CB6C240067991E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		0712AE4F26CB7C2C0067991E /* WrappedMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedMap.swift; sourceTree = "<group>"; };
+		0712AE5626CB840E0067991E /* TouchLocationWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchLocationWeatherView.swift; sourceTree = "<group>"; };
 		076A0B1926C8ECDE00599DFF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		076A0B1D26C8FBE000599DFF /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		079F6B1B26C7968E009C29AA /* MyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationView.swift; sourceTree = "<group>"; };
@@ -65,6 +73,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0712AE5126CB834D0067991E /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0712AE4D26CB6C240067991E /* MapView.swift */,
+				0712AE4F26CB7C2C0067991E /* WrappedMap.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		076A0B1C26C8FBA900599DFF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +156,7 @@
 		079F6B2C26C7A80B009C29AA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0712AE4B26CB3FEC0067991E /* MapLocationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -146,8 +164,10 @@
 		079F6B2D26C7A84E009C29AA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0712AE5126CB834D0067991E /* Map */,
 				07B5617C26C84692008E8C03 /* TodayWeatherView.swift */,
 				070F570026C9D4C7009EC649 /* WeekWeatherView.swift */,
+				0712AE5626CB840E0067991E /* TouchLocationWeatherView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -292,13 +312,17 @@
 				07C084D026C79027008FA7DD /* WeatherApp.swift in Sources */,
 				079F6B3626C7AC81009C29AA /* DailyWeatherModel.swift in Sources */,
 				079F6B3226C7ABB3009C29AA /* CurrentWeatherModel.swift in Sources */,
+				0712AE5026CB7C2C0067991E /* WrappedMap.swift in Sources */,
 				079F6B3826C7ACFA009C29AA /* DailyTemperatureModel.swift in Sources */,
 				079F6B3026C7A90C009C29AA /* WeatherModel.swift in Sources */,
 				079F6B1E26C796A9009C29AA /* MapLocationView.swift in Sources */,
 				079F6B1C26C7968E009C29AA /* MyLocationView.swift in Sources */,
 				079F6B3426C7AC20009C29AA /* WeatherInfoModel.swift in Sources */,
 				070F570126C9D4C7009EC649 /* WeekWeatherView.swift in Sources */,
+				0712AE4C26CB3FEC0067991E /* MapLocationViewModel.swift in Sources */,
+				0712AE4E26CB6C240067991E /* MapView.swift in Sources */,
 				079F6B2526C7A6E7009C29AA /* Color.swift in Sources */,
+				0712AE5726CB840E0067991E /* TouchLocationWeatherView.swift in Sources */,
 				070F570326C9D97B009EC649 /* Double.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

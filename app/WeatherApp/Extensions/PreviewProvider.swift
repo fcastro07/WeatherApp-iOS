@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import MapKit
 
 extension PreviewProvider {
     
@@ -20,7 +21,9 @@ class DeveloperPreview {
     
     static let instance = DeveloperPreview()
     
-    let vm = MyLocationViewModel()
+    let myLocationViewModel = MyLocationViewModel()
+    
+    @State var currentLocation: CLLocationCoordinate2D? = CLLocationCoordinate2D(latitude: 200, longitude: 122)
     
     let weather = WeatherModel(
         current: CurrentWeatherModel(

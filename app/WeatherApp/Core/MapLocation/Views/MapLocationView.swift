@@ -6,10 +6,18 @@
 //
 
 import SwiftUI
+import CoreLocation
+import MapKit
 
 struct MapLocationView: View {
+    
+    @StateObject var vm = MapLocationViewModel()
+    
     var body: some View {
-        Text("Map Location View")
+        VStack (spacing: 0) {
+            TouchLocationWeatherView(weather: vm.weather)
+            MapView(annotationLocation: $vm.currentLocation)
+        }
     }
 }
 
